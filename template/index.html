@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-dark bg-primary">
+            <div class="container">
+              <a class="navbar-brand" href="#">Navbar</a>
+            </div>
+          </nav>
+          <div class="card text-center mt-5">
+            <div class="card-body  m-1">
+             <h6> Please Allow Browser Location Access </h6>
+            </div>
+        </div>
+        <div class="card  mt-5">
+            <h5 class="card-header">Temperature</h5>
+            <div class="card-body  mt-3">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-row">
+                      <div class="col">
+                        <input  name="latitude" id="latitude" required type="text" class="form-control p-3" placeholder="Enter Latitude">
+                      </div>
+                      <div class="col">
+                        <input  name="longitude" id="longitude" required type="text" class="form-control p-3" placeholder="Enter Longitude">
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-4">Show Temperature</button>
+                  </form>
+            </div>
+        </div>
+   
+        {% if temp %}
+        <div class="card  mt-5">
+            <div class="card-body  m-2">
+              Currently   <strong>{{ temp }}&deg; Celcius </strong>
+            </div>
+        </div>
+        {% endif %}
+
+    </div>
+
+    
+
+    {% include 'Script.js' %}
+</body>
+</html>
